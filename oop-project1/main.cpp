@@ -35,22 +35,22 @@ int main()
 		int ThirdPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player, int card[10][15], int selectedCardsArray[10], int selectedNumbersArray[9][10]);
 
 		cout << "The bingo cards are creating..." << endl;
-		int card[10][15];	  // two-dimensional array that stores the bingo cards
+		int card[10][15]; // two-dimensional array that stores the bingo cards
 		CreateCards(card, 9); // the function that generates the bingo cards
 
 		cout << "The number of players is " << player << endl;
 		cout << "Randomly selected cards for players: " << endl;
-		int selectedCardsArray[5];						 // one-dimensional array that stores the randomly selected bingo cards to each player
+		int selectedCardsArray[5]; // one-dimensional array that stores the randomly selected bingo cards to each player
 		SelectedCards(selectedCardsArray, player, card); // the function that generates the randomly selected bingo cards to each player
 
 		cout << "SELECTED NUMBERS:" << endl;
-		int selectedNumbersArray[9][10];		  // two-dimensional array that stores the bingo bag
+		int selectedNumbersArray[9][10]; // two-dimensional array that stores the bingo bag
 		SelectedNumbers(selectedNumbersArray, 8); // the function that generates the bingo bag
 
-		int counterArray[5];																						 // one-dimensional array that stores the number of -1 on the players' cards.
-		FirstPhase(counterArray, totalScoreOfPlayersArray, player, card, selectedCardsArray, selectedNumbersArray);	 // the function that finds the winner of the first Cinko and gives 5 points to the winner
+		int counterArray[5]; // one-dimensional array that stores the number of -1 on the players' cards.
+		FirstPhase(counterArray, totalScoreOfPlayersArray, player, card, selectedCardsArray, selectedNumbersArray); // the function that finds the winner of the first Cinko and gives 5 points to the winner
 		SecondPhase(counterArray, totalScoreOfPlayersArray, player, card, selectedCardsArray, selectedNumbersArray); // the function that finds the winner of the second Cinko and gives 10 points to the winner
-		ThirdPhase(counterArray, totalScoreOfPlayersArray, player, card, selectedCardsArray, selectedNumbersArray);	 // the function that finds the winner of the Bingo and gives 15 points to the winner
+		ThirdPhase(counterArray, totalScoreOfPlayersArray, player, card, selectedCardsArray, selectedNumbersArray); // the function that finds the winner of the Bingo and gives 15 points to the winner
 		cout << endl
 			 << endl
 			 << endl
@@ -87,7 +87,7 @@ void CreateCards(int card[][15], int numberOfCards)
 	{ // iterates the number of the bingo cards(row)
 		cout << "Card " << i << ":   ";
 		for (int j = 0; j <= 14; j++)
-		{								  // iterates the numbers on the bingo card(column)
+		{ // iterates the numbers on the bingo card(column)
 			card[i][j] = rand() % 90 + 1; // generates a random number that is at least 1 and at most 90
 
 			if (j >= 1)
@@ -98,7 +98,7 @@ void CreateCards(int card[][15], int numberOfCards)
 					for (int k = 0; k < j; k++)
 					{ // the loop that compares all the numbers until [i][j] on a card with previous numbers
 						if (card[i][j] == card[i][k])
-						{								  // checks whether number already exists in  the array
+						{ // checks whether number already exists in  the array
 							card[i][j] = rand() % 90 + 1; // assigns a new number that is at least 1 and at most 90
 							check = true;
 							break; // terminates the for loop
@@ -120,7 +120,7 @@ void CreateCards(int card[][15], int numberOfCards)
 void SelectedCards(int selectedCardsArray[5], int player, int card[10][15])
 {
 	for (int i = 0; i < player; i++)
-	{										 // iterates the randomly selected bingo cards(column)
+	{ // iterates the randomly selected bingo cards(column)
 		selectedCardsArray[i] = rand() % 10; // generates a random number that is at least 0 and at most 9
 
 		if (i >= 1)
@@ -131,7 +131,7 @@ void SelectedCards(int selectedCardsArray[5], int player, int card[10][15])
 				for (int j = 0; j < i; j++)
 				{ // the loop that compares all the numbers until [i] with previous numbers
 					if (selectedCardsArray[i] == selectedCardsArray[j])
-					{										 // checks whether number already exists in  the array
+					{ // checks whether number already exists in the array
 						selectedCardsArray[i] = rand() % 10; // assigns a new number that is at least 0 and at most 9
 						check = true;
 						break; // terminates the for loop
@@ -163,8 +163,8 @@ void SelectedNumbers(int selectedNumbersArray[][10], int numberOfRow)
 {
 	int array[90]; // one-dimensional array that stores the bingo bag
 	for (int i = 0; i < 90; i++)
-	{								// iterates 90 elements for the one-dimensional array
-		array[i] = rand() % 90 + 1; // // generates a random number that is at least 1 and at most 90
+	{ // iterates 90 elements for the one-dimensional array
+		array[i] = rand() % 90 + 1; // generates a random number that is at least 1 and at most 90
 
 		if (i >= 1)
 		{ // to start with index [1]
@@ -174,7 +174,7 @@ void SelectedNumbers(int selectedNumbersArray[][10], int numberOfRow)
 				for (int j = 0; j < i; j++)
 				{ // the loop that compares all the numbers until [i] with previous numbers
 					if (array[i] == array[j])
-					{								// checks whether number already exists in  the array
+					{ // checks whether number already exists in the array
 						array[i] = rand() % 90 + 1; // assigns a new number that is at least 1 and at most 90
 						check = true;
 						break; // terminates the for loop
@@ -192,9 +192,9 @@ void SelectedNumbers(int selectedNumbersArray[][10], int numberOfRow)
 	for (int i = 0; i <= numberOfRow; i++)
 	{ // iterates the row of the two-dimensional array
 		for (int j = 0; j <= 9; j++)
-		{													// { // iterates the cloumn of the two-dimensional array
+		{ // { // iterates the cloumn of the two-dimensional array
 			selectedNumbersArray[i][j] = array[rowOfArray]; // assigns array which has unique random integers to selectedNumbersArray which is the bingo bag
-			cout << selectedNumbersArray[i][j] << " ";		// prints the bingo bag
+			cout << selectedNumbersArray[i][j] << " "; // prints the bingo bag
 			rowOfArray++;
 		}
 		cout << endl;
@@ -205,7 +205,7 @@ void SelectedNumbers(int selectedNumbersArray[][10], int numberOfRow)
 int FirstPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player, int card[10][15], int selectedCardsArray[10], int selectedNumbersArray[9][10])
 {
 	for (int i = 0; i < player; i++)
-	{						 // the loop that assigns zero point to all players
+	{ // the loop that assigns zero point to all players
 		counterArray[i] = 0; // the array that stores the number of -1 on the players' card
 	}
 
@@ -220,10 +220,10 @@ int FirstPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player,
 				{ // iterates the column of the players' cards
 
 					if (selectedNumbersArray[i][j] == card[selectedCardsArray[k]][l])
-					{										 // all the elements in the bingo bag is compared with numbers on the players' cards of all players one by one
+					{ // all the elements in the bingo bag is compared with numbers on the players' cards of all players one by one
 						card[selectedCardsArray[k]][l] = -1; // assigns -1 to be matched numbers
-						counterArray[k]++;					 // increases the number of -1 on the players' card
-						break;								 // terminates the inner loop
+						counterArray[k]++; // increases the number of -1 on the players' card
+						break; // terminates the inner loop
 					}
 				}
 			}
@@ -236,7 +236,7 @@ int FirstPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player,
 					for (int l = 0; l < player; l++)
 					{ // iterates the row of the players' cards
 						for (int m = 0; m <= 14; m++)
-						{												   // iterates the column of the players' cards
+						{ // iterates the column of the players' cards
 							cout << card[selectedCardsArray[l]][m] << " "; // prints the result of the first Cinko on the screen
 						}
 						cout << endl;
@@ -264,10 +264,10 @@ int SecondPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player
 				{ // iterates the column of the players' cards
 
 					if (selectedNumbersArray[i][j] == card[selectedCardsArray[k]][l])
-					{										 // all the elements in the bingo bag is compared with the numbers on the players' cards of all players one by one
+					{ // all the elements in the bingo bag is compared with the numbers on the players' cards of all players one by one
 						card[selectedCardsArray[k]][l] = -1; // assigns -1 to be matched numbers which are left from first Cinko
-						counterArray[k]++;					 // increases the number of -1 on the players' card
-						break;								 // terminates the inner loop
+						counterArray[k]++; // increases the number of -1 on the players' card
+						break; // terminates the inner loop
 					}
 				}
 			}
@@ -280,7 +280,7 @@ int SecondPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player
 					for (int l = 0; l < player; l++)
 					{ // iterates the row of the players' cards
 						for (int m = 0; m <= 14; m++)
-						{												   // iterates the column of the players' cards
+						{ // iterates the column of the players' cards
 							cout << card[selectedCardsArray[l]][m] << " "; // prints the result of the second Cinko on the screen
 						}
 						cout << endl;
@@ -308,10 +308,10 @@ int ThirdPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player,
 				{ // iterates the column of the players' cards
 
 					if (selectedNumbersArray[i][j] == card[selectedCardsArray[k]][l])
-					{										 // all the elements in the bingo bag is compared with the numbers on the players' cards of all players one by one
+					{ // all the elements in the bingo bag is compared with the numbers on the players' cards of all players one by one
 						card[selectedCardsArray[k]][l] = -1; // assigns -1 to be matched numbers which are left from second Cinko
-						counterArray[k]++;					 // increases the number of -1 on the players' card
-						break;								 // terminates the inner loop
+						counterArray[k]++; // increases the number of -1 on the players' card
+						break; // terminates the inner loop
 					}
 				}
 			}
@@ -324,7 +324,7 @@ int ThirdPhase(int counterArray[5], int totalScoreOfPlayersArray[5], int player,
 					for (int l = 0; l < player; l++)
 					{ // iterates the row of the players' cards
 						for (int m = 0; m <= 14; m++)
-						{												   // iterates the column of the players' cards
+						{ // iterates the column of the players' cards
 							cout << card[selectedCardsArray[l]][m] << " "; // prints the result of the third Cinko on the screen
 						}
 						cout << endl;
