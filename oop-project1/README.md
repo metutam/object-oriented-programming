@@ -1,4 +1,6 @@
-In my 1st programming project, It is expected to perform the game of chance called Tombala (Turkish Bingo) as a C++ console application.
+# PROGRAMMING PROJECT 1
+
+In my first programming project, it is expected to perform the game of chance called Tombala (Turkish Bingo) as a C++ console application.
 
 The details of this game played in real life are listed below:
 1. Tombala is a game of chance played over 3 sets with at least 2 and at most 5 players.
