@@ -30,3 +30,4 @@ The details of the implementation of object-oriented programming using the conce
    - **List Books:** Displays the information about the books registered in the system.
   
 8. **Book** class includes properties such as book title, Id, author, year of publication and Get and Set functions belonging to these properties. At the same time, the status of the book must be stored in a member variable. If the book has been borrowed by a member, its status should be "Hold", if it has not been borrowed, its status should be "Unhold". If the book is in "Hold" status, the information on who borrowed the book should also be kept. (For example, the id of the user who borrowed the book can be used for this purpose.)
+9. Assume that there is only one **Admin** in the system and create a single object of the **Admin** class in main. After that, update the relevant member functions and the username of this object as **admin** and the password to **1234**.
